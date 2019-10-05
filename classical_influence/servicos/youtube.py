@@ -1,3 +1,4 @@
+import os
 from uuid import uuid4
 
 from pytube import YouTube
@@ -15,4 +16,6 @@ def download_music(link):
     stream = youtube.streams.filter(only_audio=True).first()
     filename = str(uuid4())
     stream.download(filename=filename)
-    return filename + '.mp4'
+    os.system(f"ffmpeg -i {filename}.mp4 {filename}.wav")
+    os.remove(f'{filename}.mp4')
+    return filename + '.wav'
