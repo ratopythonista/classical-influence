@@ -24,6 +24,7 @@ setup(
             'librosa==0.7.0',
             'pytube==9.5.2',
             'matplotlib==3.1.1',
-            'playsound==0.23.1'
+            'playsound==1.2.2',
+            'pandas==0.25.2'
         ],
 )

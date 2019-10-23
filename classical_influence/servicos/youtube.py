@@ -11,11 +11,10 @@ def progress_function(stream, chunk, file_handle, bytes_remaining):
     logger.info(f'{stream.title} @ {percent} %')
 
 
-def download_music(link):
+def download_music(link, filename):
     youtube = YouTube(link, on_progress_callback=progress_function)
     stream = youtube.streams.filter(only_audio=True).first()
-    filename = str(uuid4())
     stream.download(filename=filename)
-    os.system(f"ffmpeg -i {filename}.mp4 {filename}.wav")
+    os.system(f'ffmpeg -i "{filename}.mp4" "musicas/{filename}.wav"')
     os.remove(f'{filename}.mp4')
     return filename + '.wav'

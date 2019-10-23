@@ -27,5 +27,5 @@ def create_graph(music_name, pred):
     plt.yticks(np.arange(0, 111, 10))
     plt.legend((plt_b, plt_c, plt_re, plt_rb), 
         ('Barroco', 'Classico', 'Renascentista', 'Romantico'))        
-    plt.savefig(music_name, dpi=450)
+    plt.plot()
     plt.clf()   
