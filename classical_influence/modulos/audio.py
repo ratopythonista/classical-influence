@@ -2,13 +2,10 @@ import os
 
 import librosa
 import numpy as np
-from pydub import AudioSegment
-from pydub.playback import play
+
 
 def split_music(music, start, duration):
     signal, sample_rating = librosa.load(music, offset=start, duration=duration)
-    play(AudioSegment.from_wav(music)[start*1000:(start+duration)*1000])
-    os.remove(music)
     window_size = 5*sample_rating
     qtd_windons = len(signal)//(window_size)
     for slice_count in range(qtd_windons):
